@@ -41,7 +41,7 @@ The goal is to move flowers following simple rules until each tube contains only
 
 ### **_Wireframes_**
 
-##### image header 1
+##### Wireframe
 
 ![wireframe](./image.png)
 
