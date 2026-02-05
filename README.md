@@ -2,27 +2,30 @@
 
 ## Date: 05-02-2026
 
-### By: Michael Lackey
+### By: Maryam Altammam
 
-#### [Website](https://michaellackey.com/) | [GitHub](https://github.com/NobodysLackey) | [LinkedIn](https://www.linkedin.com/in/michaelglackey/)
+####
+[GitHub](https://github.com/imryms)
+[LinkedIn](https://www.linkedin.com/in/maryam-altammam/)
+
 ***
 
 ### ***Description***
-#### A brief description of the project, what it's about, when and what you made it for, etc. ...
+#### A puzzle game where you sort flowers by color into separate tubes.
+The goal is to move flowers following simple rules until each tube contains only one flower color.
 ***
 
 ### ***Technologies Used***
-* Technology 1
-* Technology 2
-  * Sub-item 1
-  * Sub-item 2
-* Technology 3
+* HTML
+* CSS
+* Javascript
 ***
 
 ### ***Getting Started***
 
-##### Sign up and sign in as a new user and then begin viewing the different sections of the website.
-##### A Trello board was used to keep track of development progress and can be viewed [here](URL).
+##### Open the game and press Play to start.
+##### Choose a level from the levels screen (some levels are locked and unlock as you progress).
+##### Sort the flowers by color using the game rules until you complete the level.
 ##### The project was deployed and can be viewed [here](URL).
 ***
 
@@ -45,7 +48,7 @@
 
 ### ***Credits***
 
-##### Funny Images: [DuckDuckGo Search](http://www.duckduckgo.com)
+##### Images:
 
 ##### Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
 
