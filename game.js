@@ -3,11 +3,16 @@ const testTubeElement = document.querySelectorAll(".test-tube")
 const slotElement = document.querySelectorAll(".slot")
 const winnerContainerElement = document.querySelector("#winner-container")
 const floatingFlower = document.querySelector("#floating-flower")
-const gameScreenEllement = document.querySelector('#game-screen')
-let floatingColor = null
+const gameScreenElement = document.querySelector('#game-screen')
+const pointsElement = document.querySelector("#points")
+let level
 
-console.log(testTubeElement.length)
-console.log(slotElement.length)
+// Get the saved total score from localStorage
+let  totalScore = Number(localStorage.getItem("totalScore")) || 0
+pointsElement.textContent = `Points: ${totalScore}`
+
+const levelScoreElement = document.querySelector('#level-score')
+const totalScoreElement = document.querySelector("#total-score")
 
 // const levelNumberElement = document.querySelector('#game-level')
 
@@ -15,12 +20,14 @@ console.log(slotElement.length)
 const parms = new URLSearchParams(window.location.search)
 const levelFromUrl = parms.get("level")
 
-let level
 if (levelFromUrl !== null) {
   level = Number(levelFromUrl)
 } else {
   level = 1
 }
+console.log(levelFromUrl, level)
+
+let levelScore = level * 200
 
 let tubes = [
   ["red", "blue", "red", "blue"],
@@ -79,8 +86,13 @@ function moveFlower(source, destination) {
 
   render()
   if (checkWin()=== true){
+    levelScoreElement.textContent = `Level Score: ${levelScore}`
+    totalScore += levelScore
+    localStorage.setItem("totalScore", totalScore)
+    pointsElement.textContent = `Points: ${totalScore}`
+    totalScoreElement.textContent = `Total Score: ${totalScore}`
     winnerContainerElement.style.display = "block"
-    gameScreenEllement.style.display="none"
+    gameScreenElement.style.display="none"
 
   }
 }
