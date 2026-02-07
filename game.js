@@ -6,7 +6,7 @@ const floatingFlower = document.querySelector("#floating-flower")
 const gameScreenElement = document.querySelector('#game-screen')
 const pointsElement = document.querySelector("#points")
 let level
-
+let floatingColor = null
 // Get the saved total score from localStorage
 let  totalScore = Number(localStorage.getItem("totalScore")) || 0
 pointsElement.textContent = `Points: ${totalScore}`
@@ -29,12 +29,25 @@ console.log(levelFromUrl, level)
 
 let levelScore = level * 200
 
-let tubes = [
-  ["red", "blue", "red", "blue"],
-  ["blue", "red", "blue", "red"],
-  [],
-  [],
-]
+const levelsTubes = {
+  1: [
+    ["red", "blue", "red", "blue"],
+    ["blue", "red", "blue", "red"],
+    [],
+    [],
+  ],
+
+  2: [
+    ["red", "blue", "green", "red"],
+    ["blue", "green", "red", "blue"],
+    ["green", "red", "blue", "green"],
+    [],
+  ],
+}
+// Create a copy of the level tubes so we don't modify the original level data
+let tubes = (levelsTubes[level] || levelsTubes[1]).map((tube) => {
+  return [...tube]
+})
 
 let selectedTube = null
 let hideSelectedTop = false

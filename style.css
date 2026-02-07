@@ -42,6 +42,9 @@
 .blue {
   background: blue;
 }
+.green {
+  background: green;
+}
 
 #floating-flower {
   position: fixed;
@@ -53,6 +56,6 @@
   display: none;
   position: fixed;
   inset: 0;
-  background: white; 
+  background: white;
   z-index: 1000;
 }
