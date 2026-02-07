@@ -3,6 +3,7 @@ const testTubeElement = document.querySelectorAll(".test-tube")
 const slotElement = document.querySelectorAll(".slot")
 const winnerContainerElement = document.querySelector("#winner-container")
 const floatingFlower = document.querySelector("#floating-flower")
+const gameScreenEllement = document.querySelector('#game-screen')
 let floatingColor = null
 
 console.log(testTubeElement.length)
@@ -77,6 +78,11 @@ function moveFlower(source, destination) {
   tubes[destination].push(movingColor)
 
   render()
+  if (checkWin()=== true){
+    winnerContainerElement.style.display = "block"
+    gameScreenEllement.style.display="none"
+
+  }
 }
 
 
@@ -123,6 +129,31 @@ function handleTubeClick(tubeIndex) {
   selectedTube = null
   hideSelectedTop = false
   render()
+}
+
+function isTubeComplete(tube){
+  if(tube.length ===0){
+    return true
+  }
+  if(tube.length !== capacity){
+    return false
+  }
+  let firstColor = tube[0]
+  for (let i=1; i<tube.length; i++){
+    if(tube[i] !== firstColor){
+      return false
+    }
+  }
+  return true
+}
+
+function checkWin() {
+  for( let i=0; i< tubes.length; i++){
+    if(isTubeComplete(tubes[i])=== false){
+      return false
+    }
+  }
+  return true;
 }
 
 render()

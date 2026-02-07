@@ -18,10 +18,10 @@
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  box-shadow: 0 4px 10px rgb(0,0, 0, 2);
+  box-shadow: 0 4px 10px rgb(0, 0, 0, 2);
 }
 
-.slot{
+.slot {
   width: 50px;
   height: 50px;
   margin: 6px auto;
@@ -30,15 +30,18 @@
   justify-content: center;
 }
 
-.flower{
+.flower {
   width: 35px;
   height: 35px;
   border-radius: 50%;
 }
 
-.red{ background: red; }
-.blue{ background: blue; }
-
+.red {
+  background: red;
+}
+.blue {
+  background: blue;
+}
 
 #floating-flower {
   position: fixed;
@@ -46,3 +49,10 @@
   pointer-events: none;
 }
 
+#winner-container {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: white; 
+  z-index: 1000;
+}
