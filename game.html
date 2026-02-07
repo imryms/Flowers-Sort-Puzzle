@@ -4,20 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
-  <script defer src="./script.js"></script>
+  <script defer src="./game.js"></script>
   <title>Flowers Sort Puzzle</title>
 </head>
 <body>
-<h1> Levels </h1>
+<div id="game-screen">
+<div id="top-game">
+<a id="back-button" href="./levels.html">back</a>
+<h1 id="game-level"> Level 1 </h1>
+<p id="points"> 1000 </p>
+</div>
 
-<div id="game-container">
-  <div class="test-tube" id ="tube-1"></div>
-  <div class="test-tube" id ="tube-2"></div>
-  <div class="test-tube" id ="tube-3"></div>
-  <div class="test-tube" id ="tube-4"></div>
+<div id="tubes-container">
+  <div class="test-tube" id ="tube-1">
+  <div class="slot"></div>
+  <div class="slot"></div>
+  <div class="slot"></div>
+  <div class="slot"></div>
+  </div>
+  <div class="test-tube" id ="tube-2">
+  <div class="slot"></div>
+  <div class="slot"></div>
+  <div class="slot"></div>
+  <div class="slot"></div>
+  </div>
+  <div class="test-tube" id ="tube-3">
+  <div class="slot"></div>
+  <div class="slot"></div>
+  <div class="slot"></div>
+  <div class="slot"></div>
+  </div>
+  <div class="test-tube" id ="tube-4">
+  <div class="slot"></div>
+  <div class="slot"></div>
+  <div class="slot"></div>
+  <div class="slot"></div>
+  </div>
+</div>
+<div id="floating-flower"></div>
 
+<div id="game-buttons">
+  <a href="./index.html">Home</a>
+  <a href="./levels.html">Levels</a>
+  <a href="./game.html">Reset</a>
 
 </div>
 
+<div id="winner-container">
+  <h2 id="win-message">Winner!</h2>
+  <p id="total-score">Total Score : 1200</p>
+  <p id="level-score">Level Score:200</p>
+ <a href="./index.html">Home</a>
+  <a href="./levels.html">Levels</a>
+  <a href="./game.html">Next Level</a>
+
+</div>
+</div>
 </body>
 </html>
