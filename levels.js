@@ -19,6 +19,7 @@ else {
     event.preventDefault()
     alert("Finish the previous level to unlock this one!")
   })
+  level.classList.add("locked")
 }
 
 })
