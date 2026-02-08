@@ -173,7 +173,7 @@ function moveFlower(source, destination) {
     } else {
       nextLevelElement.style.display = "none"
     }
-    winnerContainerElement.style.display = "block"
+    winnerContainerElement.style.display = "flex"
     gameScreenElement.style.display = "none"
   }
 }

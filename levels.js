@@ -1,4 +1,4 @@
-const pointsElement = document.querySelector("#points-level")
+const pointsElement = document.querySelector("#points")
 
 let  totalScore = Number(localStorage.getItem("totalScore")) || 0
 pointsElement.textContent = `Points: ${totalScore}`
