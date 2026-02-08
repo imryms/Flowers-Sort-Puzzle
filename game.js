@@ -31,13 +31,32 @@ gameLevelElement.textContent = `Level ${level}`
 let levelScore = level * 200
 
 const levelsTubes = {
-  1: [["red"], ["blue"], ["red", "red", "red"], ["blue", "blue", "blue"]],
+  1: [
+    ["red"],
+   ["blue"],
+  ["red", "red", "red"],
+  ["blue", "blue", "blue"]],
 
-  2: [["red", "red", "red", "blue"], ["blue", "blue", "blue", "red"], [], []],
+  2: [
+    ["red", "red", "red", "blue"],
+   ["blue", "blue", "blue", "red"],
+    [],
+    []
+  ],
 
-  3: [["red", "blue", "red", "blue"], ["blue", "red", "blue", "red"], [], []],
+  3: [
+    ["red", "blue", "red", "blue"],
+   ["blue", "red", "blue", "red"],
+    [],
+    []
+  ],
 
-  4: [["red", "red", "blue", "blue"], ["blue", "blue", "red", "red"], [], []],
+  4: [
+    ["red", "red", "blue", "blue"],
+    ["blue", "blue", "red", "red"],
+    [],
+    []
+    ],
 
   5: [
     ["red", "red", "pink", "pink"],
@@ -70,6 +89,25 @@ const levelsTubes = {
 // Create a copy of the level tubes so we don't modify the original level data
 let tubes = (levelsTubes[level] || levelsTubes[1]).map((tube) => {
   return [...tube]
+})
+//for reset button
+let initialTubes = tubes.map((tube) => {
+  return [...tube]
+})
+
+const resetLevelElement = document.querySelector("#reset-level")
+resetLevelElement.addEventListener("click", () => {
+  tubes = initialTubes.map((tube) => {
+    return [...tube]
+  })
+  selectedTube = null
+  hideSelectedTop = false
+  floatingColor = null
+  floatingFlower.innerHTML = ""
+  winnerContainerElement.style.display = "none"
+  gameScreenElement.style.display="block"
+  nextLevelElement.style.display="inline"
+  render()
 })
 
 let selectedTube = null
@@ -210,5 +248,6 @@ function checkWin() {
   return true
 }
 
+
 render()
-ؤي 
+

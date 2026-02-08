@@ -15,10 +15,18 @@ if (levelNumber <= unlockedLevel){
   level.href=`game.html?level=${levelNumber}`
 }
 else {
-  level.addEventListener("click", () => {
+  level.addEventListener("click", (event) => {
+    event.preventDefault()
     alert("Finish the previous level to unlock this one!")
   })
 }
 
 })
 
+const resetProgressElement = document.querySelector("#reset-progress")
+
+resetProgressElement.addEventListener("click", ()=> {
+  localStorage.setItem("totalScore","0")
+  localStorage.setItem("unlockedLevel","2")
+  location.reload()
+})

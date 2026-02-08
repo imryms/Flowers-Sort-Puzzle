@@ -30,23 +30,39 @@
   justify-content: center;
 }
 
-.flower {
-  width: 35px;
-  height: 35px;
+.flower{
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  position: relative;
+  background: currentColor;
+  box-shadow:
+    0 -18px currentColor,
+    0 18px currentColor,
+    18px 0 currentColor,
+    -18px 0 currentColor;
+}
+
+.flower::after{
+  content: "";
+  position: absolute;
+  inset: 6px;
+  background: #ffd166;
   border-radius: 50%;
 }
 
+
 .red {
-  background: red;
+  color: #e63946;
 }
 .blue {
-  background: blue;
+  color: #457b9d
 }
 .green {
-  background: green;
+  color: #2a9d8f
 }
 .pink {
-  background: pink;
+  color: #ff6fae
 }
 
 #floating-flower {
