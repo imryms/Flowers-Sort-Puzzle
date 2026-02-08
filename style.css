@@ -45,6 +45,9 @@
 .green {
   background: green;
 }
+.pink {
+  background: pink;
+}
 
 #floating-flower {
   position: fixed;

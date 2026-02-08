@@ -3,15 +3,17 @@ const testTubeElement = document.querySelectorAll(".test-tube")
 const slotElement = document.querySelectorAll(".slot")
 const winnerContainerElement = document.querySelector("#winner-container")
 const floatingFlower = document.querySelector("#floating-flower")
-const gameScreenElement = document.querySelector('#game-screen')
+const gameScreenElement = document.querySelector("#game-screen")
 const pointsElement = document.querySelector("#points")
+const gameLevelElement = document.querySelector("#game-level")
+const nextLevelElement = document.querySelector("#next-level")
 let level
 let floatingColor = null
 // Get the saved total score from localStorage
-let  totalScore = Number(localStorage.getItem("totalScore")) || 0
+let totalScore = Number(localStorage.getItem("totalScore")) || 0
 pointsElement.textContent = `Points: ${totalScore}`
 
-const levelScoreElement = document.querySelector('#level-score')
+const levelScoreElement = document.querySelector("#level-score")
 const totalScoreElement = document.querySelector("#total-score")
 
 // const levelNumberElement = document.querySelector('#game-level')
@@ -25,23 +27,44 @@ if (levelFromUrl !== null) {
 } else {
   level = 1
 }
-console.log(levelFromUrl, level)
-
+gameLevelElement.textContent = `Level ${level}`
 let levelScore = level * 200
 
 const levelsTubes = {
-  1: [
-    ["red", "blue", "red", "blue"],
-    ["blue", "red", "blue", "red"],
-    [],
-    [],
+  1: [["red"], ["blue"], ["red", "red", "red"], ["blue", "blue", "blue"]],
+
+  2: [["red", "red", "red", "blue"], ["blue", "blue", "blue", "red"], [], []],
+
+  3: [["red", "blue", "red", "blue"], ["blue", "red", "blue", "red"], [], []],
+
+  4: [["red", "red", "blue", "blue"], ["blue", "blue", "red", "red"], [], []],
+
+  5: [
+    ["red", "red", "pink", "pink"],
+    ["blue", "blue", "red", "red"],
+    ["pink", "pink", "blue"],
+    ["blue"],
   ],
 
-  2: [
+  6: [
+    ["pink", "red", "blue", "pink"],
+    [],
+    ["red", "blue", "pink", "red"],
+    ["blue", "pink", "red", "blue"],
+  ],
+
+  7: [
     ["red", "blue", "green", "red"],
     ["blue", "green", "red", "blue"],
     ["green", "red", "blue", "green"],
     [],
+  ],
+
+  8: [
+  [],
+  ["red",   "green", "blue",  "green"],
+  ["green", "red",   "green", "blue"],
+  ["blue",  "red",   "blue",  "red"],
   ],
 }
 // Create a copy of the level tubes so we don't modify the original level data
@@ -75,7 +98,6 @@ function render() {
   })
 }
 
-
 testTubeElement.forEach((tube, tubeIndex) => {
   tube.addEventListener("click", () => handleTubeClick(tubeIndex))
 })
@@ -98,18 +120,25 @@ function moveFlower(source, destination) {
   tubes[destination].push(movingColor)
 
   render()
-  if (checkWin()=== true){
+  if (checkWin() === true) {
     levelScoreElement.textContent = `Level Score: ${levelScore}`
     totalScore += levelScore
     localStorage.setItem("totalScore", totalScore)
     pointsElement.textContent = `Points: ${totalScore}`
     totalScoreElement.textContent = `Total Score: ${totalScore}`
+    let unlockedLevel = Number(localStorage.getItem("unlockedLevel")) || 2
+    if (level >= unlockedLevel) {
+      localStorage.setItem("unlockedLevel", level + 1)
+    }
+    if (level < Object.keys(levelsTubes).length) {
+      nextLevelElement.href = `game.html?level=${level + 1}`
+    } else {
+      nextLevelElement.style.display = "none"
+    }
     winnerContainerElement.style.display = "block"
-    gameScreenElement.style.display="none"
-
+    gameScreenElement.style.display = "none"
   }
 }
-
 
 function handleTubeClick(tubeIndex) {
   if (selectedTube === null) {
@@ -127,7 +156,7 @@ function handleTubeClick(tubeIndex) {
     const tubeRect = testTubeElement[tubeIndex].getBoundingClientRect()
     floatingFlower.style.left = tubeRect.left + tubeRect.width / 2 + "px"
     floatingFlower.style.transform = "translateX(-50%)"
-    floatingFlower.style.top =tubeRect.top - floatingFlower.offsetHeight + "px"
+    floatingFlower.style.top = tubeRect.top - floatingFlower.offsetHeight + "px"
 
     render()
     return
@@ -156,16 +185,16 @@ function handleTubeClick(tubeIndex) {
   render()
 }
 
-function isTubeComplete(tube){
-  if(tube.length ===0){
+function isTubeComplete(tube) {
+  if (tube.length === 0) {
     return true
   }
-  if(tube.length !== capacity){
+  if (tube.length !== capacity) {
     return false
   }
   let firstColor = tube[0]
-  for (let i=1; i<tube.length; i++){
-    if(tube[i] !== firstColor){
+  for (let i = 1; i < tube.length; i++) {
+    if (tube[i] !== firstColor) {
       return false
     }
   }
@@ -173,12 +202,13 @@ function isTubeComplete(tube){
 }
 
 function checkWin() {
-  for( let i=0; i< tubes.length; i++){
-    if(isTubeComplete(tubes[i])=== false){
+  for (let i = 0; i < tubes.length; i++) {
+    if (isTubeComplete(tubes[i]) === false) {
       return false
     }
   }
-  return true;
+  return true
 }
 
 render()
+ؤي 
