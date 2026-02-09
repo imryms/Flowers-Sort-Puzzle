@@ -1,40 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
-  <script defer src="./levels.js"></script>
-  <script defer src="./game.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Krona+One&family=Lilita+One&family=Londrina+Shadow&family=Pacifico&family=Rubik+Scribble&display=swap" rel="stylesheet">
-  <title>Flowers Sort Puzzle</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./levels.js"></script>
+    <script defer src="./game.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Krona+One&family=Lilita+One&family=Londrina+Shadow&family=Pacifico&family=Rubik+Scribble&display=swap"
+      rel="stylesheet"
+    />
+    <title>Flowers Sort Puzzle</title>
+  </head>
+  <body>
+    <div id="levels-screen">
+      <div id="top-levels">
+        <a id="back-button-level" href="./index.html">⬅</a>
+        <h1 id="levels-title">Levels</h1>
+        <p id="points"></p>
+      </div>
 
-<div id="levels-screen">
+      <div id="levels-grid">
+        <a class="levels" id="level-1" href="game.html">1</a>
+        <a class="levels" id="level-2" href="game.html">2</a>
+        <a class="levels" id="level-3" href="game.html">3</a>
+        <a class="levels" id="level-4" href="game.html">4</a>
+        <a class="levels" id="level-5" href="game.html">5</a>
+        <a class="levels" id="level-6" href="game.html">6</a>
+        <a class="levels" id="level-7" href="game.html">7</a>
+        <a class="levels" id="level-8" href="game.html">8</a>
+      </div>
 
-<div id="top-levels">
-<a id="back-button-level" href="./index.html">⬅</a>
-<h1 id="levels-title"> Levels </h1>
-<p id="points"></p>
-</div>
-
-<div id="levels-grid">
-<a class="levels" id="level-1" href="game.html">1</a>
-<a class="levels" id="level-2" href="game.html">2</a>
-<a class="levels" id="level-3" href="game.html">3</a>
-<a class="levels" id="level-4" href="game.html">4</a>
-<a class="levels" id="level-5" href="game.html">5</a>
-<a class="levels" id="level-6" href="game.html">6</a>
-<a class="levels" id="level-7" href="game.html">7</a>
-<a class="levels" id="level-8" href="game.html">8</a>
-</div>
-
-<button id="reset-progress">Reset Progress</button>
-
-</div>
-
-</body>
+      <button id="reset-progress">Reset Progress</button>
+    </div>
+  </body>
 </html>
