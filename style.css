@@ -5,13 +5,14 @@
 }
 
 body {
-  background-image: url(./game.png);
+  background-image: url(./download.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   min-height: 100vh;
   margin: 0;
   position: relative;
+  overflow: hidden;
 }
 
 #welcome-screen,
@@ -21,6 +22,7 @@ body {
   z-index: 1;
 }
 
+
 body::before {
   content: "";
   position: absolute;
@@ -28,7 +30,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 0;
   pointer-events: none;
 }
@@ -42,31 +44,50 @@ body::before {
 }
 
 #game-title {
-  font-family: "Jockey One", sans-serif;
-  font-weight: 400;
+  font-family: "Patrick Hand SC", cursive;
+  font-weight: 600;
   font-style: normal;
   margin-bottom: 15px;
   font-size: 120px;
-  color: rgb(108, 11, 53);
+  color:  rgb(71, 0, 33);
 }
 
 #game-descrption {
   display: block;
-  font-size: 22px;
+  font-size: 50px;
   padding: 12px 35px;
-  font-family: "Krona One", sans-serif;
-  color: rgb(108, 11, 53);
+  font-family: "Patrick Hand SC", cursive;
+  color:  rgb(71, 0, 33);
 }
 
 #start-button {
-  margin-top: 200px;
-  padding: 15px 50px;
-  font-size: 20px;
-  font-family: "Krona One", sans-serif;
-  background: linear-gradient(to right, #a85c81, #7e3f53);
+  margin-top: 170px;
+  padding: 10px 20px;
+  font-size: 25px;
+  font-family: "Patrick Hand SC", cursive;
+  font-weight: 400;
+  background: rgb(71, 0, 33);
   text-decoration: none;
   border-radius: 25px;
   color: white;
+}
+
+#start-button:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow:
+    0 12px 25px rgba(126, 63, 83, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  background: white;
+  color: rgb(71, 0, 33);
+}
+
+#levels-screen {
+  position: relative;
+  z-index: 1;
+  padding: 20px 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #top-levels,
@@ -83,7 +104,7 @@ body::before {
   text-decoration: none;
   font-size: 40px;
   line-height: 1;
-  color: #111;
+  color: rgb(108, 11, 53);;
   padding: 6px 10px;
   margin-top: -100px;
   margin-left: 20px;
@@ -92,12 +113,12 @@ body::before {
 #levels-title,
 #game-level {
   margin: 0;
-  font-family: "Jockey One", sans-serif;
+  font-family: "Patrick Hand SC", cursive;
   font-weight: 400;
   font-style: normal;
   margin-bottom: 15px;
   font-size: 120px;
-  color: rgb(108, 11, 53);
+  color: rgb(71, 0, 33);
 }
 
 #points {
@@ -111,9 +132,11 @@ body::before {
   padding: 10px 16px;
   border-radius: 10px;
 
-  font-family: "Krona One", sans-serif;
-  font-weight: 400;
-  font-size: 15px;
+  color:rgb(108, 11, 53);;
+
+  font-family: "Patrick Hand SC", cursive;
+  font-weight: 700;
+  font-size: 22px;
 }
 
 #levels-grid {
@@ -136,11 +159,18 @@ body::before {
   color: rgb(108, 11, 53);
   background: #fff;
   cursor: pointer;
-  font-family: "Jockey One", sans-serif;
-  font-weight: 400;
+  font-family: "Patrick Hand SC", cursive;
+  font-weight: 800;
   font-style: normal;
   font-size: 40px;
 }
+
+.levels:hover {
+  background-color: rgb(108, 11, 53);
+  color: #fff;
+  transform: scale(1.05);
+}
+
 
 .levels.locked {
   color: transparent;
@@ -149,8 +179,8 @@ body::before {
 }
 
 .levels.locked::after {
-  content: "🔒";
-  color: #111;
+  content: "🔒︎";
+  color: rgb(108, 11, 53);
   font-size: 24px;
   position: absolute;
 }
@@ -158,15 +188,16 @@ body::before {
 #reset-progress {
   display: block;
   margin: 0 auto;
-  margin-top: 200px;
-  padding: 10px 16px;
+  margin-top: 120px;
+  padding: 8px 14px;
   border-radius: 10px;
   background: #fff;
-  font-family: "Krona One", sans-serif;
-  font-weight: 400;
+  font-family: "Patrick Hand SC", cursive;
+  font-weight: 700;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 20px;
   border: 1px solid #f0f0f0;
+  color:  rgb(108, 11, 53);;
 }
 
 #game-screen {
@@ -187,20 +218,19 @@ body::before {
 }
 
 .test-tube {
-  width: 90px;
-  height: 300px;
-  background: linear-gradient(to right, #f0f0f0, #ffffff, #e6e6e6);
-  border: 4px solid #d8d8d8;
-  border-radius: 45px;
-  box-shadow:
-    inset 0 0 10px rgba(255, 255, 255, 0.6),
-    inset 0 0 20px rgba(0, 0, 0, 0.05),
-    0 8px 18px rgba(0, 0, 0, 0.35);
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  padding-bottom: 12px;
+    width: 90px;
+    height: 300px;
+    background: white;
+    border: 3px solid white;
+    border-radius: 20px 20px 45px 45px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding-bottom: 15px;
+    position: relative;
+    overflow: hidden;
 }
+
 
 .slot {
   width: 50px;
@@ -233,16 +263,16 @@ body::before {
 }
 
 .red {
-  color: #e63946;
+  color:  rgb(108, 11, 53);
 }
 .blue {
-  color: #457b9d;
+  color: #17405a;
 }
 .green {
-  color: #2a9d8f;
+  color: #4b8f87;
 }
 .pink {
-  color: #ff6fae;
+  color: #977282;
 }
 
 #floating-flower {
@@ -251,8 +281,6 @@ body::before {
   pointer-events: none;
   z-index: 9999;
 }
-
-
 
 #game-buttons {
   margin-top: auto;
@@ -266,7 +294,7 @@ body::before {
   padding: 10px 18px;
   border-radius: 10px;
   background: #fff;
-  font-family: "Krona One", sans-serif;
+  font-family: "Patrick Hand SC", cursive;
   text-decoration: none;
   color: #111;
   cursor: pointer;
@@ -285,15 +313,15 @@ body::before {
 }
 
 #win-message {
-  font-family: "Jockey One", sans-serif;
-  font-size: 80px;
-  color: rgb(123, 75, 75);
+  font-family: "Patrick Hand SC", cursive;
+  font-size: 100px;
+  color: rgb(108, 11, 53);
 }
 
 #winner-container p {
-  font-size: 17px;
-  font-weight: 400;
-  font-family: "Krona One", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Patrick Hand SC", cursive;
 }
 
 #winner-container a {
@@ -302,7 +330,7 @@ body::before {
   border-radius: 10px;
   text-decoration: none;
   color: #111;
-  font-family: "Krona One", sans-serif;
+  font-family: "Patrick Hand SC", cursive;
 }
 
 #winner-buttons {
