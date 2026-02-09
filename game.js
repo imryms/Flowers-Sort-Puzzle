@@ -9,6 +9,7 @@ const gameLevelElement = document.querySelector("#game-level")
 const nextLevelElement = document.querySelector("#next-level")
 let level
 let floatingColor = null
+
 // Get the saved total score from localStorage
 let totalScore = Number(localStorage.getItem("totalScore")) || 0
 pointsElement.textContent = `Points: ${totalScore}`
@@ -16,11 +17,9 @@ pointsElement.textContent = `Points: ${totalScore}`
 const levelScoreElement = document.querySelector("#level-score")
 const totalScoreElement = document.querySelector("#total-score")
 
-// const levelNumberElement = document.querySelector('#game-level')
-
 // refrenced by https://builtin.com/articles/urlsearchparams to find which level I am in
-const parms = new URLSearchParams(window.location.search)
-const levelFromUrl = parms.get("level")
+const levelParms = new URLSearchParams(window.location.search)
+const levelFromUrl = levelParms.get("level")
 
 if (levelFromUrl !== null) {
   level = Number(levelFromUrl)
@@ -28,55 +27,56 @@ if (levelFromUrl !== null) {
   level = 1
 }
 gameLevelElement.textContent = `Level ${level}`
+
 let levelScore = level * 200
 
 const levelsTubes = {
   1: [
-    ["red"],
-   ["blue"],
+  ["red"],
+  ["blue"],
   ["red", "red", "red"],
   ["blue", "blue", "blue"]],
 
   2: [
-    ["red", "red", "red", "blue"],
-   ["blue", "blue", "blue", "red"],
-    [],
-    []
+  ["red", "red", "red", "blue"],
+  ["blue", "blue", "blue", "red"],
+  [],
+  []
   ],
 
   3: [
-    ["red", "blue", "red", "blue"],
-   ["blue", "red", "blue", "red"],
-    [],
-    []
+  ["red", "blue", "red", "blue"],
+  ["blue", "red", "blue", "red"],
+  [],
+  []
   ],
 
   4: [
-    ["red", "red", "blue", "blue"],
-    ["blue", "blue", "red", "red"],
-    [],
-    []
-    ],
+  ["red", "red", "blue", "blue"],
+  ["blue", "blue", "red", "red"],
+  [],
+  []
+  ],
 
   5: [
-    ["red", "red", "pink", "pink"],
-    ["blue", "blue", "red", "red"],
-    ["pink", "pink", "blue"],
-    ["blue"],
+  ["red", "red", "pink", "pink"],
+  ["blue", "blue", "red", "red"],
+  ["pink", "pink", "blue"],
+  ["blue"],
   ],
 
   6: [
-    ["pink", "red", "blue", "pink"],
-    [],
-    ["red", "blue", "pink", "red"],
-    ["blue", "pink", "red", "blue"],
+  ["pink", "red", "blue", "pink"],
+  [],
+  ["red", "blue", "pink", "red"],
+  ["blue", "pink", "red", "blue"],
   ],
 
   7: [
-    ["red", "blue", "green", "red"],
-    ["blue", "green", "red", "blue"],
-    ["green", "red", "blue", "green"],
-    [],
+  ["red", "blue", "green", "red"],
+  ["blue", "green", "red", "blue"],
+  ["green", "red", "blue", "green"],
+  [],
   ],
 
   8: [
@@ -86,10 +86,12 @@ const levelsTubes = {
   ["blue",  "red",   "blue",  "red"],
   ],
 }
+
 // Create a copy of the level tubes so we don't modify the original level data
-let tubes = (levelsTubes[level] || levelsTubes[1]).map((tube) => {
+let tubes = levelsTubes[level].map((tube) => {
   return [...tube]
 })
+
 //for reset button
 let initialTubes = tubes.map((tube) => {
   return [...tube]
@@ -121,11 +123,7 @@ function render() {
   tubes.forEach((tube, tubeIndex) => {
     const slots = testTubeElement[tubeIndex].querySelectorAll(".slot")
     tube.forEach((color, flowerIndex) => {
-      if (
-        tubeIndex === selectedTube &&
-        hideSelectedTop === true &&
-        flowerIndex === tube.length - 1
-      ) {
+      if (tubeIndex === selectedTube && hideSelectedTop === true && flowerIndex === tube.length - 1) {
         return
       }
       const slot = slots[flowerIndex]
@@ -146,9 +144,33 @@ function validMove(source, destination) {
   if (tubes[source].length === 0) {
     return false
   }
-
   if (tubes[destination].length === capacity) {
     return false
+  }
+  return true
+}
+
+function isTubeComplete(tube) {
+  if (tube.length === 0) {
+    return true
+  }
+  if (tube.length !== capacity) {
+    return false
+  }
+  let firstColor = tube[0]
+  for (let i = 1; i < tube.length; i++) {
+    if (tube[i] !== firstColor) {
+      return false
+    }
+  }
+  return true
+}
+
+function checkWin() {
+  for (let i = 0; i < tubes.length; i++) {
+    if (isTubeComplete(tubes[i]) === false) {
+      return false
+    }
   }
   return true
 }
@@ -156,8 +178,8 @@ function validMove(source, destination) {
 function moveFlower(source, destination) {
   const movingColor = tubes[source].pop()
   tubes[destination].push(movingColor)
-
   render()
+
   if (checkWin() === true) {
     levelScoreElement.textContent = `Level Score: ${levelScore}`
     totalScore += levelScore
@@ -193,7 +215,6 @@ function handleTubeClick(tubeIndex) {
 
     const tubeRect = testTubeElement[tubeIndex].getBoundingClientRect()
     floatingFlower.style.left = tubeRect.left + tubeRect.width / 2 + "px"
-    floatingFlower.style.transform = "translateX(-50%)"
     floatingFlower.style.top = tubeRect.top - floatingFlower.offsetHeight + "px"
 
     render()
@@ -211,43 +232,15 @@ function handleTubeClick(tubeIndex) {
     render()
     return
   }
-
   if (validMove(source, destination)) {
     moveFlower(source, destination)
   }
-
   floatingFlower.innerHTML = ""
   floatingColor = null
   selectedTube = null
   hideSelectedTop = false
   render()
 }
-
-function isTubeComplete(tube) {
-  if (tube.length === 0) {
-    return true
-  }
-  if (tube.length !== capacity) {
-    return false
-  }
-  let firstColor = tube[0]
-  for (let i = 1; i < tube.length; i++) {
-    if (tube[i] !== firstColor) {
-      return false
-    }
-  }
-  return true
-}
-
-function checkWin() {
-  for (let i = 0; i < tubes.length; i++) {
-    if (isTubeComplete(tubes[i]) === false) {
-      return false
-    }
-  }
-  return true
-}
-
 
 render()
 

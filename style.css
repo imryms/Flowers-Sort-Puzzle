@@ -246,10 +246,13 @@ body::before {
 }
 
 #floating-flower {
-  position: fixed;
-  z-index: 1000;
+  position: absolute;
+  transform: translateX(-50%);
   pointer-events: none;
+  z-index: 9999;
 }
+
+
 
 #game-buttons {
   margin-top: auto;
