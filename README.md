@@ -15,7 +15,7 @@
 
 #### A puzzle game where you sort flowers by color into separate tubes.
 
-The goal is to move flowers following simple rules until each tube contains only one flower color.
+The goal is to move flowers between tubes until each tube contains only one flower color.
 
 ---
 
@@ -39,18 +39,23 @@ The goal is to move flowers following simple rules until each tube contains only
 
 ---
 
-### **_Wireframes_**
+### **Screenshots**
 
-##### Wireframe
+##### Game pages
+![welcome-page](./welcome-page.png)
+![levels-page](./level-page.png)
+![game-page](./gsme-page.png)
+
+##### Wireframes
 
 ![wireframe](./image.png)
 
 ### **_Future Updates_**
 
-- [ ] Future Update 1
-- [ ] Future Update 2
-- [x] Completed Update
-- [x] ~~Strikethrough~~ Items Also
+- [ ] Add more levels with increased diffculty and more colors
+- [ ] Include animations and sound effects
+- [ ] Improve the visual design of flowers and tubes
+- [ ] Implement a timer or move counter for additional challenge
 
 ---
 
