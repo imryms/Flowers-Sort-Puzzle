@@ -55,7 +55,7 @@ The goal is to move flowers between tubes until each tube contains only one flow
 - [ ] Add more levels with increased diffculty and more colors
 - [ ] Include animations and sound effects
 - [ ] Improve the visual design of flowers and tubes
-- [ ] Implement a timer or move counter for additional challenge
+- [x] Implement a timer or move counter for additional challenge
 
 ---
 
