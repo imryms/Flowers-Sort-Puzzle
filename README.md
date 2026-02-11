@@ -42,13 +42,13 @@ The goal is to move flowers between tubes until each tube contains only one flow
 ### **Screenshots**
 
 ##### Game pages
-![welcome-page](./welcome-page.png)
-![levels-page](./level-page.png)
-![game-page](./gsme-page.png)
+![welcome-page](./pic/welcome-page.png)
+![levels-page](./pic/level-page.png)
+![game-page](./pic/gsme-page.png)
 
 ##### Wireframes
 
-![wireframe](./image.png)
+![wireframe](./pic/image.png)
 
 ### **_Future Updates_**
 

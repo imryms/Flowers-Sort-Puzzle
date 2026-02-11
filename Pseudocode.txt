@@ -1,0 +1,31 @@
+-The game starts with the welcome screen that show the game title and start button.
+
+-When the user prese (Play) the system move to the levels screen.
+
+-implement array to all available levels
+
+-only the unlocked level will open based on the user progress (using loop to show the level on screen and will go through all level and decides which levels is open)
+
+-will store the highest unlocked level at variable to remember what level is open
+
+-the user selects an unlocked level then the system move to game screen
+
+-a function prepare the game state
+
+-create the tubes and fill the tube with flowers (  array for all tubes and Inside it another array for the flowers in one tube)
+
+-the user click on a tube ( store this tube in variable to remember it ) - the first flower from the top will move up and there is function check if the source tube is not empty
+
+-the user clicks on another tube and there is function check the destination tube has space
+
+-one function to check the source and destination tube
+
+-one function to move the flower
+
+-the flower is removed from the source tube and add to the destination tube
+
+-loop to checking the winning to check every tube it is correct if all pass then  the player win
+
+-the winner screen will display and score is calculated after each level
+
+-function to open next level
