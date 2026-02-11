@@ -3,7 +3,7 @@ const pointsElement = document.querySelector("#points")
 pointsElement.textContent = `Points: ${totalScore}`
 
 const levelsElement = document.querySelectorAll(".levels")
-let unlockedLevel = Number(localStorage.getItem("unlockedLevel")) || 2
+let unlockedLevel = Number(localStorage.getItem("unlockedLevel")) || 1
 
 levelsElement.forEach((level)=>{
 const levelNumber = level.textContent
@@ -22,6 +22,6 @@ else {
 const resetProgressElement = document.querySelector("#reset-progress")
 resetProgressElement.addEventListener("click", ()=> {
   localStorage.setItem("totalScore","0")
-  localStorage.setItem("unlockedLevel","2")
+  localStorage.setItem("unlockedLevel","1")
   location.reload()
 })

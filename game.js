@@ -35,57 +35,50 @@ const levelsTubes = {
   ["red"],
   ["blue"],
   ["red", "red", "red"],
-  ["blue", "blue", "blue"]],
-
+  ["blue", "blue", "blue"]
+  ],
   2: [
   ["red", "red", "red", "blue"],
   ["blue", "blue", "blue", "red"],
   [],
   []
   ],
-
   3: [
   ["red", "blue", "red", "blue"],
   ["blue", "red", "blue", "red"],
   [],
   []
   ],
-
   4: [
   ["red", "red", "blue", "blue"],
   ["blue", "blue", "red", "red"],
   [],
   []
   ],
-
   5: [
   ["red", "red", "pink", "pink"],
   ["blue", "blue", "red", "red"],
   ["pink", "pink", "blue"],
   ["blue"],
   ],
-
   6: [
   ["pink", "red", "blue", "pink"],
   [],
   ["red", "blue", "pink", "red"],
   ["blue", "pink", "red", "blue"],
   ],
-
   7: [
   ["red", "blue", "green", "red"],
   ["blue", "green", "red", "blue"],
   ["green", "red", "blue", "green"],
   [],
   ],
-
   8: [
   [],
   ["red",   "green", "blue",  "green"],
   ["green", "red",   "green", "blue"],
   ["blue",  "red",   "blue",  "red"],
   ],
-
 }
 
 // Create a copy of the level tubes so we don't modify the original level data
@@ -187,7 +180,7 @@ function moveFlower(source, destination) {
     localStorage.setItem("totalScore", totalScore)
     pointsElement.textContent = `Points: ${totalScore}`
     totalScoreElement.textContent = `Total Score: ${totalScore}`
-    let unlockedLevel = Number(localStorage.getItem("unlockedLevel")) || 2
+    let unlockedLevel = Number(localStorage.getItem("unlockedLevel")) || 1
     if (level >= unlockedLevel) {
       localStorage.setItem("unlockedLevel", level + 1)
     }
