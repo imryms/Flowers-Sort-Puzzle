@@ -35,7 +35,7 @@ The goal is to move flowers between tubes until each tube contains only one flow
 
 ##### Sort the flowers by color using the game rules until you complete the level.
 
-##### The project was deployed and can be viewed [here](FlowersSortPuzzleGA.surge.sh).
+##### The project was deployed and can be viewed [here](https://flowerssortpuzzlega.surge.sh/).
 
 ---
 
