@@ -1,52 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
-  <script defer src="./script.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Delius+Unicase:wght@400;700&family=Jockey+One&family=Krona+One&family=Lilita+One&family=Londrina+Shadow&family=Pacifico&family=Patrick+Hand+SC&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Scribble&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Delius+Unicase:wght@400;700&family=Jockey+One&family=Krona+One&family=Lilita+One&family=Londrina+Shadow&family=Pacifico&family=Patrick+Hand+SC&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Scribble&display=swap"
+      rel="stylesheet"
+    />
 
-  <title>Flowers Sort Puzzle</title>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 
-<div id="welcome-screen">
+    <title>Flowers Sort Puzzle</title>
+  </head>
+  <body>
+    <div id="welcome-screen">
+      <h1 id="game-title"> Flowers Sort Puzzle </h1>
+      <p id="game-descrption">Sort the flowers by color</p>
 
-<h1 id="game-title"> Flowers Sort Puzzle</h1>
+      <div class="preview-tubes">
+        <div class="test-tube preview">
+          <div class="slot"><div class="flower red"></div></div>
+          <div class="slot"><div class="flower blue"></div></div>
+          <div class="slot"><div class="flower red"></div></div>
+          <div class="slot"><div class="flower blue"></div></div>
+        </div>
 
-<p id="game-descrption">Sort the flowers by color</p>
+        <div class="test-tube preview">
+          <div class="slot"><div class="flower red"></div></div>
+          <div class="slot"><div class="flower red"></div></div>
+          <div class="slot"><div class="flower red"></div></div>
+          <div class="slot"><div class="flower red"></div></div>
+        </div>
 
-<div class="preview-tubes">
-  <div class="test-tube preview">
-    <div class="slot"><div class="flower red"></div></div>
-    <div class="slot"><div class="flower blue"></div></div>
-    <div class="slot"><div class="flower red"></div></div>
-    <div class="slot"><div class="flower blue"></div></div>
-  </div>
+        <div class="test-tube preview">
+          <div class="slot"><div class="flower blue"></div></div>
+          <div class="slot"><div class="flower blue"></div></div>
+          <div class="slot"><div class="flower blue"></div></div>
+          <div class="slot"><div class="flower blue"></div></div>
+        </div>
+        <div class="test-tube preview"></div>
+      </div>
 
-  <div class="test-tube preview">
-    <div class="slot"><div class="flower red"></div></div>
-    <div class="slot"><div class="flower red"></div></div>
-    <div class="slot"><div class="flower red"></div></div>
-    <div class="slot"><div class="flower red"></div></div>
-  </div>
-
-  <div class="test-tube preview">
-    <div class="slot"><div class="flower blue"></div></div>
-    <div class="slot"><div class="flower blue"></div></div>
-    <div class="slot"><div class="flower blue"></div></div>
-    <div class="slot"><div class="flower blue"></div></div>
-  </div>
-  <div class="test-tube preview"></div>
-</div>
-
-<a id="start-button" href="./levels.html">Start</a>
-
-
-</div>
-
-</body>
+      <a id="start-button" class="animate__animated animate__pulse animate__infinite"
+      href="./levels.html"> Start</a
+      >
+    </div>
+  </body>
 </html>

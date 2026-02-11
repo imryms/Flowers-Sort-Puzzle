@@ -192,6 +192,10 @@ function moveFlower(source, destination) {
       nextLevelElement.style.display = "none"
     }
     winnerContainerElement.style.display = "flex"
+    const winMessage = document.querySelector("#win-message")
+    winMessage.classList.remove("animate__animated", "animate__tada")
+    void winMessage.offsetWidth
+    winMessage.classList.add("animate__animated", "animate__tada")
     gameScreenElement.style.display = "none"
   }
 }
@@ -206,7 +210,7 @@ function handleTubeClick(tubeIndex) {
 
     floatingFlower.innerHTML = ""
     const flower = document.createElement("div")
-    flower.classList.add("flower", floatingColor)
+    flower.classList.add("flower", floatingColor,"animate__animated", "animate__rotateIn")
     floatingFlower.appendChild(flower)
 
     const tubeRect = testTubeElement[tubeIndex].getBoundingClientRect()
