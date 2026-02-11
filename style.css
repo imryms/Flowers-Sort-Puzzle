@@ -108,14 +108,32 @@ body::before {
   margin-bottom: 30px;
 }
 
+#top-game {
+  margin-bottom: 5px;
+}
+
+#timer {
+  position: absolute;
+  top: 140px;
+  right: 30px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 22px;
+  font-family: "Patrick Hand SC", cursive;
+  color: rgb(108, 11, 53);
+}
+
+
+
+
 #back-button-level,
 #back-button-game {
   text-decoration: none;
   font-size: 40px;
   line-height: 1;
-  color: rgb(108, 11, 53);;
+  color: rgb(108, 11, 53);
   padding: 6px 10px;
-  margin-top: -100px;
   margin-left: 20px;
 }
 
@@ -130,12 +148,12 @@ body::before {
   color: rgb(71, 0, 33);
 }
 
+
 #points {
   margin: 0;
   min-width: 90px;
   text-align: center;
 
-  margin-top: -100px;
   margin-left: 20px;
 
   padding: 10px 16px;
@@ -300,7 +318,7 @@ body::before {
 }
 
 #game-buttons a,
-#game-buttons button {
+#game-buttons button, #retry-level-lose {
   padding: 10px 18px;
   border-radius: 10px;
   background: #fff;
@@ -311,7 +329,7 @@ body::before {
   border: none;
 }
 
-#winner-container {
+#winner-container, #lose-container {
   display: none;
   position: fixed;
   inset: 0;
@@ -322,19 +340,19 @@ body::before {
   gap: 18px;
 }
 
-#win-message {
+#win-message, #lose-message {
   font-family: "Patrick Hand SC", cursive;
   font-size: 100px;
   color: rgb(108, 11, 53);
 }
 
-#winner-container p {
+#winner-container p, #lose-container p {
   font-size: 30px;
   font-weight: 600;
   font-family: "Patrick Hand SC", cursive;
 }
 
-#winner-container a {
+#winner-container a, #lose-container a {
   padding: 10px 20px;
   background: #fff;
   border-radius: 10px;
@@ -343,8 +361,9 @@ body::before {
   font-family: "Patrick Hand SC", cursive;
 }
 
-#winner-buttons {
+#winner-buttons, #loser-buttons {
   display: flex;
   flex-direction: row;
   gap: 14px;
 }
+

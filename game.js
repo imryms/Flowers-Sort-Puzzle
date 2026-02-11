@@ -7,12 +7,12 @@ const gameScreenElement = document.querySelector("#game-screen")
 const pointsElement = document.querySelector("#points")
 const gameLevelElement = document.querySelector("#game-level")
 const nextLevelElement = document.querySelector("#next-level")
+const timerElement = document.querySelector("#timer")
 let level
 
 let selectedTube = null
 let hideSelectedTop = false
 let floatingColor = null
-
 
 // Get the saved total score from localStorage
 let totalScore = Number(localStorage.getItem("totalScore")) || 0
@@ -35,53 +35,33 @@ gameLevelElement.textContent = `Level ${level}`
 let levelScore = level * 200
 
 const levelsTubes = {
-  1: [
-  ["red"],
-  ["blue"],
-  ["red", "red", "red"],
-  ["blue", "blue", "blue"]
-  ],
-  2: [
-  ["red", "red", "red", "blue"],
-  ["blue", "blue", "blue", "red"],
-  [],
-  []
-  ],
-  3: [
-  ["red", "blue", "red", "blue"],
-  ["blue", "red", "blue", "red"],
-  [],
-  []
-  ],
-  4: [
-  ["red", "red", "blue", "blue"],
-  ["blue", "blue", "red", "red"],
-  [],
-  []
-  ],
+  1: [["red"], ["blue"], ["red", "red", "red"], ["blue", "blue", "blue"]],
+  2: [["red", "red", "red", "blue"], ["blue", "blue", "blue", "red"], [], []],
+  3: [["red", "blue", "red", "blue"], ["blue", "red", "blue", "red"], [], []],
+  4: [["red", "red", "blue", "blue"], ["blue", "blue", "red", "red"], [], []],
   5: [
-  ["red", "red", "pink", "pink"],
-  ["blue", "blue", "red", "red"],
-  ["pink", "pink", "blue"],
-  ["blue"],
+    ["red", "red", "pink", "pink"],
+    ["blue", "blue", "red", "red"],
+    ["pink", "pink", "blue"],
+    ["blue"],
   ],
   6: [
-  ["pink", "red", "blue", "pink"],
-  [],
-  ["red", "blue", "pink", "red"],
-  ["blue", "pink", "red", "blue"],
+    ["pink", "red", "blue", "pink"],
+    [],
+    ["red", "blue", "pink", "red"],
+    ["blue", "pink", "red", "blue"],
   ],
   7: [
-  ["red", "blue", "green", "red"],
-  ["blue", "green", "red", "blue"],
-  ["green", "red", "blue", "green"],
-  [],
+    ["red", "blue", "green", "red"],
+    ["blue", "green", "red", "blue"],
+    ["green", "red", "blue", "green"],
+    [],
   ],
   8: [
-  [],
-  ["red",   "green", "blue",  "green"],
-  ["green", "red",   "green", "blue"],
-  ["blue",  "red",   "blue",  "red"],
+    [],
+    ["red", "green", "blue", "green"],
+    ["green", "red", "green", "blue"],
+    ["blue", "red", "blue", "red"],
   ],
 }
 
@@ -105,11 +85,15 @@ resetLevelElement.addEventListener("click", () => {
   floatingColor = null
   floatingFlower.innerHTML = ""
   winnerContainerElement.style.display = "none"
-  gameScreenElement.style.display="block"
-  nextLevelElement.style.display="inline"
+  gameScreenElement.style.display = "block"
+  nextLevelElement.style.display = "inline"
+  loseContainerElemnt.style.display = "none";
+  clearInterval(timerInterval);
+  timeLeft = 20;
+  startTimer();
+
   render()
 })
-
 
 function render() {
   slotElement.forEach((slot) => {
@@ -119,7 +103,11 @@ function render() {
   tubes.forEach((tube, tubeIndex) => {
     const slots = testTubeElement[tubeIndex].querySelectorAll(".slot")
     tube.forEach((color, flowerIndex) => {
-      if (tubeIndex === selectedTube && hideSelectedTop === true && flowerIndex === tube.length - 1) {
+      if (
+        tubeIndex === selectedTube &&
+        hideSelectedTop === true &&
+        flowerIndex === tube.length - 1
+      ) {
         return
       }
       const slot = slots[flowerIndex]
@@ -191,6 +179,8 @@ function moveFlower(source, destination) {
     } else {
       nextLevelElement.style.display = "none"
     }
+    clearInterval(timerInterval);
+    loseContainerElemnt.style.display = "none";
     winnerContainerElement.style.display = "flex"
     const winMessage = document.querySelector("#win-message")
     winMessage.classList.remove("animate__animated", "animate__tada")
@@ -210,7 +200,12 @@ function handleTubeClick(tubeIndex) {
 
     floatingFlower.innerHTML = ""
     const flower = document.createElement("div")
-    flower.classList.add("flower", floatingColor,"animate__animated", "animate__rotateIn")
+    flower.classList.add(
+      "flower",
+      floatingColor,
+      "animate__animated",
+      "animate__rotateIn"
+    )
     floatingFlower.appendChild(flower)
 
     const tubeRect = testTubeElement[tubeIndex].getBoundingClientRect()
@@ -243,6 +238,42 @@ function handleTubeClick(tubeIndex) {
   hideSelectedTop = false
   render()
 }
+//timer
+const loseContainerElemnt = document.querySelector("#lose-container");
+const retryButton = document.querySelector("#retry-level-lose");
+
+let timeLeft = 20;
+let timerInterval;
+
+function startTimer() {
+  timerElement.textContent = `⏱ ${timeLeft}`;
+
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    timerElement.textContent = `⏱ ${timeLeft}`;
+
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+
+      loseContainerElemnt.style.display = "flex";
+      winnerContainerElement.style.display = "none";
+      gameScreenElement.style.display = "none";
+    }
+  }, 1000);
+}
+
+startTimer();
+
+retryButton.addEventListener("click", () => {
+  loseContainerElemnt.style.display = "none";
+  winnerContainerElement.style.display = "none";
+  gameScreenElement.style.display = "block";
+
+  clearInterval(timerInterval);
+
+  timeLeft = 20;
+  startTimer();
+});
+
 
 render()
-
