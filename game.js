@@ -210,6 +210,8 @@ function handleTubeClick(tubeIndex) {
     floatingFlower.appendChild(flower)
 
     const tubeRect = testTubeElement[tubeIndex].getBoundingClientRect()
+    const containerRect = tubesContainerElement.getBoundingClientRect()
+
     floatingFlower.style.left = tubeRect.left + tubeRect.width / 2 + "px"
     floatingFlower.style.top = tubeRect.top - floatingFlower.offsetHeight + "px"
 
