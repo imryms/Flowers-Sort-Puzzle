@@ -8,7 +8,11 @@ const pointsElement = document.querySelector("#points")
 const gameLevelElement = document.querySelector("#game-level")
 const nextLevelElement = document.querySelector("#next-level")
 let level
+
+let selectedTube = null
+let hideSelectedTop = false
 let floatingColor = null
+
 
 // Get the saved total score from localStorage
 let totalScore = Number(localStorage.getItem("totalScore")) || 0
@@ -106,8 +110,6 @@ resetLevelElement.addEventListener("click", () => {
   render()
 })
 
-let selectedTube = null
-let hideSelectedTop = false
 
 function render() {
   slotElement.forEach((slot) => {
