@@ -91,7 +91,6 @@ resetLevelElement.addEventListener("click", () => {
   clearInterval(timerInterval);
   timeLeft = 20;
   startTimer();
-
   render()
 })
 
@@ -124,6 +123,7 @@ testTubeElement.forEach((tube, tubeIndex) => {
 
 const capacity = 4
 
+//validMove
 function validMove(source, destination) {
   if (tubes[source].length === 0) {
     return false
@@ -134,6 +134,7 @@ function validMove(source, destination) {
   return true
 }
 
+//isTubeComplete
 function isTubeComplete(tube) {
   if (tube.length === 0) {
     return true
@@ -150,6 +151,7 @@ function isTubeComplete(tube) {
   return true
 }
 
+//checkWin
 function checkWin() {
   for (let i = 0; i < tubes.length; i++) {
     if (isTubeComplete(tubes[i]) === false) {
@@ -159,6 +161,7 @@ function checkWin() {
   return true
 }
 
+//moveFlower
 function moveFlower(source, destination) {
   const movingColor = tubes[source].pop()
   tubes[destination].push(movingColor)
@@ -190,6 +193,7 @@ function moveFlower(source, destination) {
   }
 }
 
+//handleTubeClick
 function handleTubeClick(tubeIndex) {
   if (selectedTube === null) {
     if (tubes[tubeIndex].length === 0) return
@@ -200,20 +204,13 @@ function handleTubeClick(tubeIndex) {
 
     floatingFlower.innerHTML = ""
     const flower = document.createElement("div")
-    flower.classList.add(
-      "flower",
-      floatingColor,
-      "animate__animated",
-      "animate__rotateIn"
-    )
+    flower.classList.add("flower",floatingColor,"animate__animated","animate__rotateIn")
     floatingFlower.appendChild(flower)
 
     const tubeRect = testTubeElement[tubeIndex].getBoundingClientRect()
     const containerRect = tubesContainerElement.getBoundingClientRect()
-
     floatingFlower.style.left = tubeRect.left + tubeRect.width / 2 + "px"
     floatingFlower.style.top = tubeRect.top - floatingFlower.offsetHeight + "px"
-
     render()
     return
   }
@@ -238,6 +235,7 @@ function handleTubeClick(tubeIndex) {
   hideSelectedTop = false
   render()
 }
+
 //timer
 const loseContainerElemnt = document.querySelector("#lose-container");
 const retryButton = document.querySelector("#retry-level-lose");

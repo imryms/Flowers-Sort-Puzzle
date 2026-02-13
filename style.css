@@ -124,9 +124,6 @@ body::before {
   color: rgb(108, 11, 53);
 }
 
-
-
-
 #back-button-level,
 #back-button-game {
   text-decoration: none;
@@ -367,3 +364,148 @@ body::before {
   gap: 14px;
 }
 
+/* Responsive Design */
+
+/* Tablets */
+@media (max-width: 900px) {
+
+  #game-title {
+    font-size: 70px;
+  }
+
+  #levels-title,
+  #game-level {
+    font-size: 80px;
+  }
+
+  #game-descrption {
+    font-size: 28px;
+  }
+
+  #levels-grid {
+    grid-template-columns: repeat(3, 74px);
+  }
+
+  .test-tube {
+    width: 75px;
+    height: 250px;
+  }
+
+  .slot {
+    width: 45px;
+    height: 45px;
+  }
+
+  #timer {
+    font-size: 18px;
+    top: 120px;
+  }
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  #welcome-screen {
+    padding: 30px 20px;
+  }
+
+  #game-title {
+    font-size: 50px;
+  }
+
+  #game-descrption {
+    font-size: 22px;
+  }
+
+  .preview-tubes {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  #levels-title,
+  #game-level {
+    font-size: 55px;
+  }
+
+  #levels-grid {
+    grid-template-columns: repeat(2, 70px);
+    gap: 12px;
+  }
+
+  .levels {
+    width: 65px;
+    height: 65px;
+    font-size: 30px;
+  }
+
+  #tubes-container {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .test-tube {
+    width: 65px;
+    height: 210px;
+  }
+
+  .slot {
+    width: 40px;
+    height: 40px;
+    margin: 6px auto;
+  }
+
+  .flower {
+    width: 18px;
+    height: 18px;
+    box-shadow:
+      0 -12px currentColor,
+      0 12px currentColor,
+      12px 0 currentColor,
+      -12px 0 currentColor;
+  }
+
+  #win-message,
+  #lose-message {
+    font-size: 60px;
+  }
+
+  #winner-container p,
+  #lose-container p {
+    font-size: 20px;
+  }
+
+  #game-buttons {
+    gap: 12px;
+  }
+
+  #game-buttons a,
+  #game-buttons button {
+    padding: 8px 12px;
+    font-size: 16px;
+  }
+}
+
+
+@media (max-width: 400px) {
+
+  #game-title {
+    font-size: 40px;
+  }
+
+  #levels-title,
+  #game-level {
+    font-size: 45px;
+  }
+
+  .test-tube {
+    width: 55px;
+    height: 180px;
+  }
+
+  .levels {
+    width: 55px;
+    height: 55px;
+    font-size: 25px;
+  }
+}
